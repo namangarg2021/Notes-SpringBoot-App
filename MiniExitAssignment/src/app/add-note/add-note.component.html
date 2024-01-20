@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Note</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <app-navbar></app-navbar>
+    <div class="form-bg">
+      <div class="container">
+        <div class="row">
+          <div class="fixed-header">
+            <div class="form-container">
+              <form
+                [formGroup]="Note"
+                (ngSubmit)="add()"
+                class="form-horizontal"
+              >
+                <div class="row mt-5">
+                  <div class="col offset-5">
+                    <h3 class="title">Add a Note</h3>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea
+                    class="form-control"
+                    type="textarea"
+                    placeholder="Add a note"
+                    id="note"
+                    name="note"
+                    formControlName="note"
+                    rows="10"
+                    cols="50"
+                  >
+                  </textarea>
+                </div>
+                <h6 style="color: red" *ngIf="note?.touched">
+                  Note is required
+                </h6>
+                <h6 style="color: red">
+                  Only Special Characters allowed are @ , ; & * + -
+                </h6>
+
+                <div class="row">
+                  <div class="col-1 offset-1">
+                    <button class="btn btn-success" [disabled]="Note.invalid">
+                      Add
+                    </button>
+                  </div>
+                  <div class="col-1">
+                    <button class="btn btn-danger">
+                      <a
+                        href="/home"
+                        style="text-decoration: none"
+                        class="text-light"
+                        >Cancel</a
+                      >
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

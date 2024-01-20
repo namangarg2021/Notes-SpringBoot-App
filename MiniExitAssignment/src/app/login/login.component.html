@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Notes Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <app-navbar></app-navbar>
+    <div class="form-bg">
+      <div class="container">
+        <div class="row">
+          <div class="fixed-header">
+            <div class="form-container">
+              <form
+                [formGroup]="Login"
+                (ngSubmit)="login()"
+                class="form-horizontal"
+              >
+                <h3 class="title">Login Form</h3>
+                <br />
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    type="email"
+                    placeholder="Email"
+                    id="email"
+                    name="email"
+                    formControlName="email"
+                  />
+                </div>
+                <span
+                  style="color: red"
+                  *ngIf="email && email.invalid && email.touched"
+                  >Email is required</span
+                >
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    type="password"
+                    placeholder="Password"
+                    id="password"
+                    name="password"
+                    formControlName="password"
+                    autocomplete="on"
+                  />
+                </div>
+                <span
+                  style="color: red"
+                  *ngIf="password?.invalid && password?.touched"
+                  >Password is required</span
+                >
+                <br />
+                <button
+                  class="btn btn-primary signin mt-2"
+                  [disabled]="Login.invalid"
+                >
+                  Log in
+                </button>
+                <br /><br />
+                <h6 class="register">
+                  Do Not Have an Account? Click Here to
+                  <a href="registration" style="font-size: 16px">Register</a>
+                </h6>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

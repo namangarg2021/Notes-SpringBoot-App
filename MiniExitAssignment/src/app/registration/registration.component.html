@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Product Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <app-navbar></app-navbar>
+
+    <div class="container">
+      <div class="row mt-4 mb-2" style="text-align: center">
+        <div class="col">
+          <h3 class="title">Register with your email and password</h3>
+        </div>
+      </div>
+      <div class="form-container">
+        <form
+          [formGroup]="Registration"
+          (ngSubmit)="register()"
+          class="form-horizontal"
+        >
+          <div class="row">
+            <div class="col-6 offset-3">
+              <div class="form-group">
+                <input
+                  class="form-control p-3"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email *"
+                  formControlName="email"
+                  email="true"
+                />
+                <span
+                  class="error"
+                  *ngIf="email && email.touched && email.invalid"
+                  >Invalid Email</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-3">
+              <div class="form-group">
+                <input
+                  class="form-control p-3"
+                  type="password"
+                  id="password"
+                  placeholder="Password *"
+                  name="password"
+                  formControlName="password"
+                  autocomplete="on"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-3">
+              <div class="form-group">
+                <input
+                  class="form-control p-3"
+                  type="password"
+                  placeholder="Confirm Password *"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  formControlName="confirmPassword"
+                  autocomplete="on"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-3">
+              <label *ngIf="error" class="error">{{ msg }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 offset-5">
+              <button class="btn" [disabled]="Registration.invalid">
+                Register
+              </button>
+            </div>
+          </div>
+          <br />
+
+          <div class="row">
+            <div class="col-6 offset-4">
+              <h6 class="user-login">
+                Have an account already? Click Here to
+                <a href="login">Login</a>
+              </h6>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
